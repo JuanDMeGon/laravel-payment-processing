@@ -22,6 +22,9 @@
                                     value="{{ mt_rand(500, 100000) / 100 }}"
                                     required
                                 >
+                                <small class="form-text text-muted">
+                                    Use values with up to two decimal positions, using a dot "."
+                                </small>
                             </div>
                             <div class="col-auto">
                                 <label>Currency</label>
@@ -32,6 +35,28 @@
                                         </option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <label>
+                                    Select the desired payment platform
+                                </label>
+                                <div class="form-group">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        @foreach ($paymentPlatforms as $paymentPlatform)
+                                            <label class="btn btn-outline-secondary rounded m-2 p-1">
+                                                <input
+                                                    type="radio"
+                                                    name="payment_platform"
+                                                    value="{{ $paymentPlatform->id }}"
+                                                    required
+                                                >
+                                                <img class="img-thumbnail" src="{{ asset($paymentPlatform->image) }}">
+                                            </label>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="text-center mt-3">
