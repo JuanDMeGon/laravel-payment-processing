@@ -86,7 +86,7 @@ class PayPalService
                     0 => [
                         'amount' => [
                             'currency_code' =>strtoupper($currency),
-                            'value' => $value
+                            'value' => round($value * $factor = $this->resolveFactor($currency)) / $factor,
                         ]
                     ]
                 ],
@@ -114,6 +114,17 @@ class PayPalService
                 'Content-Type' => 'application/json'
             ],
         );
+    }
+
+    public function resolveFactor($currency)
+    {
+        $zeroDecimalCurrencies = ['JPY'];
+
+        if (in_array(strtoupper($currency), $zeroDecimalCurrencies)) {
+            return 1;
+        }
+
+        return 100;
     }
 
 }
