@@ -34,8 +34,6 @@ class PaymentController extends Controller
             'payment_platform' => ['required', 'exists:payment_platforms,id'],
         ];
 
-        dd($request->all());
-
         $request->validate($rules);
 
         $paymentPlatform = $this->paymentPlatformResolver
