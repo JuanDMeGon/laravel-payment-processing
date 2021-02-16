@@ -15,11 +15,14 @@ class StripeService
 
     protected $secret;
 
+    protected $plans;
+
     public function __construct()
     {
         $this->baseUri = config('services.stripe.base_uri');
         $this->key = config('services.stripe.key');
         $this->secret = config('services.stripe.secret');
+        $this->plans = config('services.stripe.plans');
     }
 
     public function resolveAuthorization(&$queryParams, &$formParams, &$headers)
@@ -80,6 +83,11 @@ class StripeService
         return redirect()
             ->route('home')
             ->withErrors('We are unable to confirm your payment. Try again, please');
+    }
+
+    public function handleSubscription(Request $request)
+    {
+        dd($this->plans, $request->all());
     }
 
     public function createIntent($value, $currency, $paymentMethod)
