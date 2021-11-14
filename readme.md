@@ -10,6 +10,33 @@ Integrate payment gateways such as PayPal and Stripe to receive online payments 
 - Build a payment platform that integrates MULTIPLE payment gateways at once
 - Understand the essential steps to process payments from Laravel, not only with - PayPal and Stripe, but with any other platform.
 
+## Development
+
+### Requirements
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+```bash
+docker-compose up -d --build
+```
+
+```bash
+docker-compose exec app composer install
+```
+
+```bash
+docker-compose exec app cp .env.example .env
+```
+
+```bash
+docker-compose exec app php artisan key:generate
+```
+
+```bash
+docker-compose exec app php artisan migrate --seed
+```
+
 ## License
 
 You can use this project to deepen your knowledge and use it as a guide while you follow the course.
