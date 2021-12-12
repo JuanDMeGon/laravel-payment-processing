@@ -1,5 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-chmod -R 777 /var/www/html/storage
+cd /var/www/html/ \
+  && composer install \
+  && [ -f ".env" ] || cp .env.example .env \
+  && php artisan key:generate \
+  && chmod -R 777 storage bootstrap/cache .env \
+  && php artisan migrate --seed
 
-supervisord -c /etc/supervisor/conf.d/supervisord.conf
+php-fpm

@@ -17,26 +17,11 @@ Integrate payment gateways such as PayPal and Stripe to receive online payments 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
+
 ```bash
 docker-compose up -d --build
 ```
-
-```bash
-docker-compose exec app composer install
-```
-
-```bash
-docker-compose exec app cp .env.example .env
-```
-
-```bash
-docker-compose exec app php artisan key:generate
-```
-
-```bash
-docker-compose exec app php artisan migrate --seed
-```
-
+Check the commands being run on build in .docker/entrypoint
 ## License
 
 You can use this project to deepen your knowledge and use it as a guide while you follow the course.
