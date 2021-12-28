@@ -3,10 +3,18 @@
 namespace App\Traits;
 
 use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
 
 trait ConsumesExternalServices
 {
-    public function makeRequest($method, $requestUrl, $queryParams = [], $formParams = [], $headers = [], $isJsonRequest = false)
+    public function makeRequest(
+        $method, 
+        $requestUrl, 
+        $queryParams = [], 
+        $formParams = [], 
+        $headers = [], 
+        $isJsonRequest = false
+    ): ResponseInterface
     {
         $client = new Client([
             'base_uri' => $this->baseUri,

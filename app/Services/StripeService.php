@@ -3,9 +3,10 @@
 namespace App\Services;
 
 use Illuminate\Http\Request;
+use App\ConsumesExternalInterface;
 use App\Traits\ConsumesExternalServices;
 
-class StripeService
+class StripeService implements ConsumesExternalInterface
 {
     use ConsumesExternalServices;
 
